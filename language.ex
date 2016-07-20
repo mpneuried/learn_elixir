@@ -176,3 +176,12 @@ end
 
 # Recursion / Loops
 # elixir has no loops
+# see e6.recusion.ex
+
+# Capture Operator (function short)
+Enum.map [1, 2, 3], fn(num) ->
+  num * 2
+end
+# same as
+Enum.map([1, 2, 3], &(&1 * 2))
+
