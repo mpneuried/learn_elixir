@@ -13,6 +13,9 @@ long
 test
 """
 
+# character list (used by erlang modules)
+cl = 'hello world'
+
 # string templates
 me = "you and me"
 s = "abc plus #{ me }"
@@ -184,4 +187,24 @@ Enum.map [1, 2, 3], fn(num) ->
 end
 # same as
 Enum.map([1, 2, 3], &(&1 * 2))
+
+
+# For loops
+evens = fn( until ) ->
+	 for idx <- 0..until, rem(idx, 2) == 0, do: idx
+end
+IO.inspect evens.(50)
+
+# Sigils are shortcurls
+# ~{key}{content-delim}{content}{content-delim}{options}
+# key = lowercase allow vars in content
+# key = uppercase no vars possibl
+# regexp
+~r/[a-Z0-9]/i
+# list of words:
+~w(hello there) == [ "hello", "there" ]
+# escaped strings
+~s( "hello" ) == "\"hello\""
+# escaped character list
+~c( hello 'cl' ) == 'hello \'cl\''
 
